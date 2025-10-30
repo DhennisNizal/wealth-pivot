@@ -8,6 +8,10 @@ export const color = {
   transparent: "rgba(0,0,0,0)",
   white: "#ffffff",
   black: "#000000",
+  emeraldGreen: "#00B686",
+  navyBlue: "#1E2A38",
+  blue: "#1677FF",
+  grsy: "#808080",
 };
 
 export const shadow = {
