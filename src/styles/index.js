@@ -12,6 +12,7 @@ export const color = {
   navyBlue: "#1E2A38",
   blue: "#1677FF",
   gray: "#808080",
+  lightGray: "#d3d3d3",
 };
 
 export const shadow = {

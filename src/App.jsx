@@ -1,10 +1,10 @@
 import "./styles/global.css";
-import Header from "./components/header";
+import LandingPage from "./pages/landing-page";
 
 function App() {
   return (
     <>
-      <Header />
+      <LandingPage />
     </>
   );
 }
