@@ -7,12 +7,14 @@ export const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 4rem;
+  width: 100vw;
+  height: 4rem;
+  padding: 1rem 4rem;
   background-color: ${color.transparent};
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 999;
-  position: relative;
+  position: fixed;
 
   ${breakpoint.tablet} {
     padding: 1rem 1.5rem;
@@ -85,7 +87,7 @@ export const JoinUsButton = styled(Button)`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.5rem;
+  padding: 0.6rem 1.5rem;
   height: auto;
   line-height: 1;
   color: ${color.white};
