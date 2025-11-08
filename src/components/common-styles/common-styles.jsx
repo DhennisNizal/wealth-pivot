@@ -3,8 +3,9 @@ import { breakpoint } from "../../styles";
 
 export const SectionWrapper = styled.section`
   height: auto;
-  width: 100vw;
+  width: 100%;
   margin: auto;
+  font-family: "Roboto", sans-serif;
 
   ${breakpoint.mobile} {
     padding: 0;
