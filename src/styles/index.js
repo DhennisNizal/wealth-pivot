@@ -10,6 +10,7 @@ export const color = {
   black: "#000000",
   emeraldGreen: "#00B686",
   navyBlue: "#1E2A38",
+  darkBlue: "#23395d",
   blue: "#1677FF",
   gray: "#808080",
   lightGray: "#d3d3d3",

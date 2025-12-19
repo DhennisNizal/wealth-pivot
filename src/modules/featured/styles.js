@@ -9,7 +9,11 @@ export const Container = styled.section`
   margin-bottom: 8rem;
 
   ${breakpoint.mobile} {
-    padding: 2rem 1rem;
+    padding: 2rem 0.5rem;
+    margin: 0;
+  }
+  ${breakpoint.tablet} {
+    margin-top: 8rem;
   }
 `;
 
@@ -17,6 +21,10 @@ export const CarouselContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+
+  ${breakpoint.mobile} {
+    padding: 1rem;
+  }
 `;
 
 export const CardWrapper = styled.div`
@@ -51,11 +59,16 @@ export const CardWrapper = styled.div`
 export const Card = styled.article`
   flex: 0 0 auto;
   width: 25rem;
-  background-color: #23395d;
+  background-color: ${color.darkBlue};
   border-radius: 0.5rem;
   color: white;
   cursor: pointer;
   transition: transform 0.3s ease;
+
+  ${breakpoint.mobile} {
+    width: 18rem;
+    height: auto;
+  }
 
   &:hover {
     transform: translateY(-5px);
@@ -79,6 +92,10 @@ export const Card = styled.article`
       color: ${color.emeraldGreen};
       font-size: 1.2rem;
       font-weight: 500;
+
+      ${breakpoint.mobile} {
+        font-size: 1rem;
+      }
     }
 
     .title {
@@ -86,18 +103,27 @@ export const Card = styled.article`
       color: ${color.white};
       font-size: 1.6rem;
       font-weight: 600;
+
+      ${breakpoint.mobile} {
+        font-size: 1.3rem;
+      }
     }
 
     .description {
       margin: 0;
       color: ${color.lightGray};
       line-height: 1.5rem;
+
+      ${breakpoint.mobile} {
+        font-size: 0.9rem;
+      }
     }
 
     .duration {
       margin: 0;
-      color: ${color.gray};
+      color: ${color.lightGray};
       font-size: 0.9rem;
+      font-weight: 300;
     }
   }
 `;

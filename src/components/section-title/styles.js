@@ -12,6 +12,7 @@ export const SectionTitleWrapper = styled.div`
 
     ${breakpoint.mobile} {
       font-size: 2rem;
+      text-align: center;
     }
   }
 
@@ -23,6 +24,7 @@ export const SectionTitleWrapper = styled.div`
 
     ${breakpoint.mobile} {
       font-size: 1rem;
+      text-align: center;
     }
   }
 `;

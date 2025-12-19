@@ -1,5 +1,3 @@
-// src/modules/featured/index.jsx
-
 import React, { useRef } from "react";
 import { SectionWrapper } from "../../components/common-styles/common-styles";
 import SectionTitle from "../../components/section-title";
