@@ -13,9 +13,9 @@ export const Container = styled.div`
   ${breakpoint.mobile} {
     height: auto;
     flex-direction: column-reverse;
-    margin-top: 4rem;
     padding: 1rem;
     gap: 0;
+    margin-bottom: 4rem;
   }
 
   ${breakpoint.tablet} {
