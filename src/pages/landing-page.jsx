@@ -4,6 +4,7 @@ import Transition from "../components/transition";
 import Header from "../components/header";
 import Home from "../modules/home";
 import Featured from "../modules/featured";
+import About from "../modules/about";
 
 const LandingPage = () => {
   return (
@@ -13,6 +14,10 @@ const LandingPage = () => {
 
       <Transition>
         <Featured />
+      </Transition>
+
+      <Transition>
+        <About />
       </Transition>
     </PageLayout>
   );
