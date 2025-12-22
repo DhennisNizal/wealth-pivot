@@ -1,10 +1,9 @@
 import "./styles/global.css";
-import LandingPage from "./pages/landing-page";
-
+import AppRoute from "./route";
 function App() {
   return (
     <>
-      <LandingPage />
+      <AppRoute />
     </>
   );
 }
