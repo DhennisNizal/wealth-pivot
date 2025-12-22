@@ -4,7 +4,7 @@ import SectionTitle from "../../components/section-title";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 import * as S from "./styles";
-import { articles } from "./data";
+import { featuredArticles } from "../article/data";
 
 const Featured = () => {
   const scrollRef = useRef(null);
@@ -34,7 +34,7 @@ const Featured = () => {
           />
 
           <S.CardWrapper ref={scrollRef}>
-            {articles.map((item) => (
+            {featuredArticles.map((item) => (
               <S.Card key={item.id}>
                 <div className="article-thumbnail">
                   <img src={item.thumbnail} alt={item.title} />
