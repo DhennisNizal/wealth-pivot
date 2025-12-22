@@ -1,18 +1,19 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { SectionWrapper } from "../../components/common-styles/common-styles";
 import SectionTitle from "../../components/section-title";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-
 import * as S from "./styles";
 import { featuredArticles } from "../article/data";
 
 const Featured = () => {
   const scrollRef = useRef(null);
+  const navigate = useNavigate();
 
   const scroll = (direction) => {
     const container = scrollRef.current;
     if (container) {
-      const cardWidth = 25 * 16 + 32; // 25rem * 16px + 2rem gap
+      const cardWidth = 25 * 16 + 32;
       container.scrollLeft += direction === "left" ? -cardWidth : cardWidth;
     }
   };
@@ -35,7 +36,10 @@ const Featured = () => {
 
           <S.CardWrapper ref={scrollRef}>
             {featuredArticles.map((item) => (
-              <S.Card key={item.id}>
+              <S.Card
+                key={item.id}
+                onClick={() => navigate(`/articles/${item.id}`)}
+              >
                 <div className="article-thumbnail">
                   <img src={item.thumbnail} alt={item.title} />
                 </div>

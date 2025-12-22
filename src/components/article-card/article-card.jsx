@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "./styles";
 
 const ArticleCard = ({ item }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/articles/${item.id}`);
+  };
+
   return (
-    <Card>
+    <Card onClick={handleClick}>
       <div className="article-thumbnail">
         <img src={item.thumbnail} alt={item.title} />
       </div>
