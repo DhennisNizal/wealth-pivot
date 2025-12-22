@@ -22,7 +22,7 @@ const Transition = ({ children }) => {
   }, []);
 
   return (
-    <Wrapper ref={ref} isVisible={isVisible}>
+    <Wrapper ref={ref} $isVisible={isVisible}>
       {children}
     </Wrapper>
   );
