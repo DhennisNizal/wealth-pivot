@@ -10,7 +10,7 @@ const FeaturedCard = memo(({ item, onNavigate }) => {
   return (
     <S.Card onClick={() => onNavigate(item.id)}>
       <div className="article-thumbnail">
-        <img loading="lazy" src={item.thumbnail} alt={item.title} />
+        <img src={item.thumbnail} alt={item.title} />
       </div>
 
       <div className="article-info">

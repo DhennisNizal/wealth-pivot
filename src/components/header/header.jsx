@@ -1,27 +1,83 @@
 import React, { useState } from "react";
+import { HashLink } from "react-router-hash-link";
 import Logo from "../logo";
 import * as S from "./styles";
+import JoinModal from "../join-modal";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // sidebar
+  const [isModalVisible, setModalVisible] = useState(false); // modal
 
   const toggleSidebar = () => setIsOpen((prev) => !prev);
   const closeSidebar = () => setIsOpen(false);
 
+  const openModal = () => setModalVisible(true);
+  const closeModal = () => setModalVisible(false);
+
+  const handleSubmit = (email) => {
+    console.log("Email submitted:", email);
+  };
+
+  const scrollWithOffset = (el) => {
+    const yOffset = -80; // negative value moves the scroll up
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
   return (
     <>
       <S.HeaderWrapper>
-        <Logo />
+        <HashLink smooth to="#home" scroll={scrollWithOffset}>
+          <Logo />
+        </HashLink>
         <S.NavContainer>
           <S.Navlinks>
-            <S.NavItem>Home</S.NavItem>
-            <S.NavItem>Featured</S.NavItem>
-            <S.NavItem>About</S.NavItem>
-            <S.NavItem>Articles</S.NavItem>
-            <S.NavItem>Contact</S.NavItem>
+            <S.NavItem
+              as={HashLink}
+              smooth
+              to="#home"
+              scroll={scrollWithOffset}
+            >
+              Home
+            </S.NavItem>
+            <S.NavItem
+              as={HashLink}
+              smooth
+              to="#featured"
+              scroll={scrollWithOffset}
+            >
+              Featured
+            </S.NavItem>
+            <S.NavItem
+              as={HashLink}
+              smooth
+              to="#about"
+              scroll={scrollWithOffset}
+            >
+              About
+            </S.NavItem>
+            <S.NavItem
+              as={HashLink}
+              smooth
+              to="#article"
+              scroll={scrollWithOffset}
+            >
+              Articles
+            </S.NavItem>
+            <S.NavItem
+              as={HashLink}
+              smooth
+              to="#footer"
+              scroll={scrollWithOffset}
+            >
+              Contact
+            </S.NavItem>
           </S.Navlinks>
         </S.NavContainer>
-        <S.JoinUsButton>Join us</S.JoinUsButton>
+
+        {/* Join Us button */}
+        <S.JoinUsButton onClick={openModal}>Join us</S.JoinUsButton>
+
         <S.Hamburger onClick={toggleSidebar} />
       </S.HeaderWrapper>
 
@@ -31,13 +87,58 @@ const Header = () => {
       {/* Sidebar */}
       <S.Sidebar $isOpen={isOpen}>
         <S.Navlinks>
-          <S.NavItem onClick={closeSidebar}>Home</S.NavItem>
-          <S.NavItem onClick={closeSidebar}>Featured</S.NavItem>
-          <S.NavItem onClick={closeSidebar}>About</S.NavItem>
-          <S.NavItem onClick={closeSidebar}>Articles</S.NavItem>
+          <S.NavItem
+            as={HashLink}
+            smooth
+            to="#home"
+            scroll={scrollWithOffset}
+            onClick={closeSidebar}
+          >
+            Home
+          </S.NavItem>
+          <S.NavItem
+            as={HashLink}
+            smooth
+            to="#featured"
+            scroll={scrollWithOffset}
+            onClick={closeSidebar}
+          >
+            Featured
+          </S.NavItem>
+          <S.NavItem
+            as={HashLink}
+            smooth
+            to="#about"
+            scroll={scrollWithOffset}
+            onClick={closeSidebar}
+          >
+            About
+          </S.NavItem>
+          <S.NavItem
+            as={HashLink}
+            smooth
+            to="#article"
+            scroll={scrollWithOffset}
+            onClick={closeSidebar}
+          >
+            Articles
+          </S.NavItem>
         </S.Navlinks>
-        <S.SidebarButton onClick={closeSidebar}>Join us</S.SidebarButton>
+        <S.SidebarButton
+          onClick={() => {
+            closeSidebar();
+            openModal();
+          }}
+        >
+          Join us
+        </S.SidebarButton>
       </S.Sidebar>
+
+      <JoinModal
+        visible={isModalVisible}
+        onClose={closeModal}
+        onSubmit={handleSubmit}
+      />
     </>
   );
 };

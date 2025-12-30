@@ -1,4 +1,5 @@
 import React from "react";
+import { HashLink } from "react-router-hash-link";
 import { SectionWrapper } from "../../components/common-styles/common-styles";
 import HomeGIF from "../../components/gif/home-gif/home-gif";
 import { Button } from "antd";
@@ -6,6 +7,12 @@ import { Button } from "antd";
 import * as S from "./styles";
 
 const Home = () => {
+  const scrollWithOffset = (el) => {
+    const yOffset = -80; // 5rem above the element
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
   return (
     <SectionWrapper>
       <S.Container>
@@ -23,12 +30,13 @@ const Home = () => {
           </div>
 
           <div className="button-wrapper">
-            <Button className="button-1">Explore Latest Articles</Button>
-            <Button className="button-2">What We Cover</Button>
-          </div>
+            <HashLink smooth to="#article" scroll={scrollWithOffset}>
+              <Button className="button-1">Explore Latest Articles</Button>
+            </HashLink>
 
-          <div className="phrase">
-            <p>Trusted by thousands of smart readers daily.</p>
+            <HashLink smooth to="#about" scroll={scrollWithOffset}>
+              <Button className="button-2">What We Cover</Button>
+            </HashLink>
           </div>
         </S.LeftContent>
         <S.RightContent>

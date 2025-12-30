@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { color, breakpoint } from "../../styles/index";
 
-export const TextLogo = styled.a`
+export const TextLogo = styled.span`
   cursor: pointer;
   font-size: ${(props) => props.$fontSize || "1.5rem"};
   font-weight: 700;

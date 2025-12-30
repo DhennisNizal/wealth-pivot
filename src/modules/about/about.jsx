@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionTitle from "../../components/section-title";
 import { FaCircleCheck } from "react-icons/fa6";
 import { GoStarFill } from "react-icons/go";
 import { BsPeopleFill } from "react-icons/bs";
 import { Button } from "antd";
+import JoinModal from "../../components/join-modal";
 
 import * as S from "./styles";
 
 const About = () => {
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => setModalVisible(true);
+  const closeModal = () => setModalVisible(false);
+
+  const handleSubmit = (email) => {
+    console.log("Email submitted:", email);
+    closeModal();
+  };
+
   return (
     <S.Container>
       <SectionTitle title="About Us" subtitle="Our mission and commitment" />
@@ -47,10 +58,18 @@ const About = () => {
             <h2>Join thousand of readers growing financially online</h2>
           </div>
           <div className="right">
-            <Button type="primary">Join community</Button>
+            <Button onClick={openModal} type="primary">
+              Join community
+            </Button>
           </div>
         </S.JoinUs>
       </S.ContentWrapper>
+
+      <JoinModal
+        visible={isModalVisible}
+        onClose={closeModal}
+        onSubmit={handleSubmit}
+      />
     </S.Container>
   );
 };
