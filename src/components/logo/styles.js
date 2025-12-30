@@ -3,7 +3,7 @@ import { color, breakpoint } from "../../styles/index";
 
 export const TextLogo = styled.a`
   cursor: pointer;
-  font-size: ${(props) => props.fontSize || "1.5rem"};
+  font-size: ${(props) => props.$fontSize || "1.5rem"};
   font-weight: 700;
   color: ${color.emeraldGreen};
 
