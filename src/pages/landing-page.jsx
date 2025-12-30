@@ -1,11 +1,14 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { PageLayout } from "../components/common-styles/common-styles";
 import Transition from "../components/transition";
 import Header from "../components/header";
 import Home from "../modules/home";
-import Featured from "../modules/featured";
-import About from "../modules/about";
-import Article from "../modules/article";
+import Loader from "../components/loader";
+
+const Featured = lazy(() => import("../modules/featured"));
+const About = lazy(() => import("../modules/about"));
+const Article = lazy(() => import("../modules/article"));
+const Footer = lazy(() => import("../components/footer"));
 
 const LandingPage = () => {
   return (
@@ -13,17 +16,29 @@ const LandingPage = () => {
       <Header />
       <Home />
 
-      <Transition>
-        <Featured />
-      </Transition>
+      <Suspense fallback={<Loader />}>
+        <Transition>
+          <Featured />
+        </Transition>
+      </Suspense>
 
-      <Transition>
-        <About />
-      </Transition>
+      <Suspense fallback={<Loader />}>
+        <Transition>
+          <About />
+        </Transition>
+      </Suspense>
 
-      <Transition>
-        <Article />
-      </Transition>
+      <Suspense fallback={<Loader />}>
+        <Transition>
+          <Article />
+        </Transition>
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <Transition>
+          <Footer />
+        </Transition>
+      </Suspense>
     </PageLayout>
   );
 };

@@ -1,9 +1,10 @@
-import React, { use } from "react";
-import { useEffect } from "react";
+import React, { useEffect, memo } from "react";
 import * as S from "./styles";
 import SectionTitle from "../../components/section-title";
 import ArticleCard from "../../components/article-card";
 import { articles } from "../article/data";
+
+const MemoArticleCard = memo(ArticleCard);
 
 const ArticleList = () => {
   useEffect(() => {
@@ -19,7 +20,7 @@ const ArticleList = () => {
 
       <S.ContentWrapper>
         {articles.map((item) => (
-          <ArticleCard key={item.id} item={item} />
+          <MemoArticleCard key={item.id} item={item} />
         ))}
       </S.ContentWrapper>
     </S.Container>

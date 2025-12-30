@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useCallback, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { SectionWrapper } from "../../components/common-styles/common-styles";
 import SectionTitle from "../../components/section-title";
@@ -6,17 +6,41 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import * as S from "./styles";
 import { featuredArticles } from "../article/data";
 
+const FeaturedCard = memo(({ item, onNavigate }) => {
+  return (
+    <S.Card onClick={() => onNavigate(item.id)}>
+      <div className="article-thumbnail">
+        <img loading="lazy" src={item.thumbnail} alt={item.title} />
+      </div>
+
+      <div className="article-info">
+        <h2 className="category">{item.category}</h2>
+        <h1 className="title">{item.title}</h1>
+        <p className="description">{item.description}</p>
+        <p className="duration">{item.duration}</p>
+      </div>
+    </S.Card>
+  );
+});
+
 const Featured = () => {
   const scrollRef = useRef(null);
   const navigate = useNavigate();
 
-  const scroll = (direction) => {
+  const handleNavigate = useCallback(
+    (id) => {
+      navigate(`/articles/${id}`);
+    },
+    [navigate]
+  );
+
+  const scroll = useCallback((direction) => {
     const container = scrollRef.current;
     if (container) {
-      const cardWidth = 25 * 16 + 32;
+      const cardWidth = 25 * 16 + 32; // 25rem + gap
       container.scrollLeft += direction === "left" ? -cardWidth : cardWidth;
     }
-  };
+  }, []);
 
   return (
     <SectionWrapper>
@@ -36,21 +60,11 @@ const Featured = () => {
 
           <S.CardWrapper ref={scrollRef}>
             {featuredArticles.map((item) => (
-              <S.Card
+              <FeaturedCard
                 key={item.id}
-                onClick={() => navigate(`/articles/${item.id}`)}
-              >
-                <div className="article-thumbnail">
-                  <img src={item.thumbnail} alt={item.title} />
-                </div>
-
-                <div className="article-info">
-                  <h2 className="category">{item.category}</h2>
-                  <h1 className="title">{item.title}</h1>
-                  <p className="description">{item.description}</p>
-                  <p className="duration">{item.duration}</p>
-                </div>
-              </S.Card>
+                item={item}
+                onNavigate={handleNavigate}
+              />
             ))}
           </S.CardWrapper>
 

@@ -12,7 +12,7 @@ const ArticleCard = ({ item }) => {
   return (
     <Card onClick={handleClick}>
       <div className="article-thumbnail">
-        <img src={item.thumbnail} alt={item.title} />
+        <img loading="lazy" src={item.thumbnail} alt={item.title} />
       </div>
 
       <div className="article-info">

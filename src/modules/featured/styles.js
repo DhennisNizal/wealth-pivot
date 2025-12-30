@@ -74,11 +74,17 @@ export const Card = styled.article`
     transform: translateY(-5px);
   }
 
-  .article-thumbnail img {
-    object-fit: cover;
+  .article-thumbnail {
+    aspect-ratio: 4 / 3;
     width: 100%;
-    height: auto;
+    overflow: hidden;
     border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .article-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .article-info {
