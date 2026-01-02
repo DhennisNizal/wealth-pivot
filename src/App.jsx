@@ -1,9 +1,9 @@
 import "./styles/global.css";
-
+import AppRoute from "./route";
 function App() {
   return (
     <>
-      <h1>Hello world</h1>
+      <AppRoute />
     </>
   );
 }
